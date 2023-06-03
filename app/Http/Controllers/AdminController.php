@@ -13,11 +13,14 @@ class AdminController extends Controller
     }
 
     public function vaksin() {
-        return view('admin.vaksin');
+        $vaksins = vaksin::all();
+        return view('admin.vaksin', compact('vaksins'));
     }
 
     public function lakes() {
-        return view('admin.lakes');
+        $lakess = layanan_kesehatan::all();
+
+        return view('admin.lakes', compact('lakess'));
     }
 
     public function imunisasi() {

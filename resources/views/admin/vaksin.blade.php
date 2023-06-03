@@ -50,18 +50,19 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        @foreach ($vaksins as $vaksin)
                                         <tr>
                                             <td>
-                                                1
+                                                {{ $vaksin->id }}
                                             </td>
                                             <td>
-                                                BCG
+                                                {{ $vaksin->nama_vaksin }}
                                             </td>
                                             <td>
-                                                Sekian...
+                                                {{ $vaksin->deskripsi_vaksin }}
                                             </td>
                                             <td>
-                                                10
+                                                {{ $vaksin->umur_minimal }}
                                             </td>
                                             <td>
                                                 <a class="btn btn-xs btn-primary" href="{{ url('ubah_vaksin') }}">
@@ -77,60 +78,7 @@
                                                 </form>
                                             </td>
                                         </tr>
-                                        <tr>
-                                            <td>
-                                                2
-                                            </td>
-                                            <td>
-                                                Polio 1
-                                            </td>
-                                            <td>
-                                                Sekian...
-                                            </td>
-                                            <td>
-                                                10
-                                            </td>
-                                            <td>
-                                                <a class="btn btn-xs btn-primary" href="ubah_vaksin.html">
-                                                    Ubah
-                                                </a>
-                                                <form
-                                                    action=""
-                                                    method="POST" style="display: inline-block;">
-                                                    <input type="hidden" name="_method" value="DELETE">
-                                                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                                    <input type="submit" class="btn btn-xs btn-danger"
-                                                        value="Hapus">
-                                                </form>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                3
-                                            </td>
-                                            <td>
-                                                Polio 2
-                                            </td>
-                                            <td>
-                                                Sekian...
-                                            </td>
-                                            <td>
-                                                10
-                                            </td>
-                                            <td>
-                                                <a class="btn btn-xs btn-primary" href="ubah_vaksin.html">
-                                                    Ubah
-                                                </a>
-                                                <form
-                                                    action=""
-                                                    method="POST" style="display: inline-block;">
-                                                    <input type="hidden" name="_method" value="DELETE">
-                                                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                                    <input type="submit" class="btn btn-xs btn-danger"
-                                                        value="Hapus">
-                                                </form>
-                                            </td>
-                                        </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>
