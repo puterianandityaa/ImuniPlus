@@ -19,20 +19,26 @@
             <!-- partial -->
             <div class="container-fluid page-body-wrapper">
                 <div class="container" align="center" style="padding-top: 100px;">
-                    <form action="">
+                    <form action="{{ url('upload_vaksin') }}">
                         <div style="padding: 15px;">
                             <label for="">Nama Vaksin</label>
-                            <input type="text" style="color:black" name="name"
-                                placeholder="Tuliskan nama vaksin">
+                            <input type="text" style="color:black" name="name" placeholder="Tuliskan nama vaksin">
                         </div>
                         <div style="padding: 15px;">
                             <label for="">Deskripsi</label>
-                            <input type="text" style="color:black" name="name"
+                            <input type="text" style="color:black" name="description"
                                 placeholder="Tuliskan deskripsi">
                         </div>
                         <div style="padding: 15px;">
+                            <label for="">Ketersediaan Vaksin</label><br>
+                            <input type="radio" id="true_vaccine" name="availability" value="1">
+                            <label for="true_vaccine">Ada</label><br>
+                            <input type="radio" id="false_vaccine" name="availability" value="0">
+                            <label for="false_vaccine">Habis</label><br>
+                        </div>
+                        <div style="padding: 15px;">
                             <label for="">Umur Minimal</label>
-                            <input type="text" style="color:black" name="name"
+                            <input type="text" style="color:black" name="min_age"
                                 placeholder="Tuliskan umur minimal penerima vaksin">
                         </div>
                         <div style="padding: 15px;">

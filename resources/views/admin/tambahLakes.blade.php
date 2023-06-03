@@ -14,7 +14,7 @@
             <!-- partial -->
             <div class="container-fluid page-body-wrapper">
                 <div class="container" align="center" style="padding-top: 100px;">
-                    <form action="">
+                    <form action="{{ url('upload_lakes') }}">
                         <div style="padding: 15px;">
                             <label for="">Nama</label>
                             <input type="text" style="color:black" name="name"
@@ -22,12 +22,12 @@
                         </div>
                         <div style="padding: 15px;">
                             <label for="">Alamat</label>
-                            <input type="text" style="color:black" name="name"
+                            <input type="text" style="color:black" name="address"
                                 placeholder="Tuliskan alamat layanan kesehatan">
                         </div>
                         <div style="padding: 15px;">
                             <label for="">Jadwal</label>
-                            <select name="" id="" style="color:black;width: 200px;">
+                            <select name="schedule" id="" style="color:black;width: 200px;">
                                 <option>-- Select --</option>
                                 <option value="a">a</option>
                                 <option value="b">b</option>

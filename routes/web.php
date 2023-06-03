@@ -50,6 +50,14 @@ Route::get('/ubah_lakes', [AdminController::class, 'ubahLakes']);
 
 Route::get('/ubah_vaksin', [AdminController::class, 'ubahVaksin']);
 
+Route::get('/upload_lakes', [AdminController::class, 'uploadLakes']);
+
+Route::get('/upload_vaksin', [AdminController::class, 'uploadVaksin']);
+
+
+
+
+
 
 
 
