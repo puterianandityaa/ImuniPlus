@@ -50,18 +50,19 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        @foreach ($imunisasis as $imunisasi)
                                         <tr>
                                             <td>
-                                                1
+                                                {{ $imunisasi->id }}
                                             </td>
                                             <td>
-                                                RS Siloam
+                                                {{ $imunisasi->layanan_kesehatan->nama_lakes }}
                                             </td>
                                             <td>
-                                                Polio 2
+                                                {{ $imunisasi->vaksin->nama_vaksin }}
                                             </td>
                                             <td>
-                                                100
+                                                {{ $imunisasi->stok_vaksin }}
                                             </td>
                                             <td>
                                                 <a class="btn btn-xs btn-primary" href="{{ url('ubah_imunisasi') }}">
@@ -77,60 +78,7 @@
                                                 </form>
                                             </td>
                                         </tr>
-                                        <tr>
-                                            <td>
-                                                2
-                                            </td>
-                                            <td>
-                                                RS Mitra Keluarga
-                                            </td>
-                                            <td>
-                                                Polio 1
-                                            </td>
-                                            <td>
-                                                210
-                                            </td>
-                                            <td>
-                                                <a class="btn btn-xs btn-primary" href="ubah_imunisasi.html">
-                                                    Ubah
-                                                </a>
-                                                <form
-                                                    action=""
-                                                    method="POST" style="display: inline-block;">
-                                                    <input type="hidden" name="_method" value="DELETE">
-                                                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                                    <input type="submit" class="btn btn-xs btn-danger"
-                                                        value="Hapus">
-                                                </form>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                3
-                                            </td>
-                                            <td>
-                                                RS Permata Keluarga
-                                            </td>
-                                            <td>
-                                                Polio 1
-                                            </td>
-                                            <td>
-                                                102
-                                            </td>
-                                            <td>
-                                                <a class="btn btn-xs btn-primary" href="ubah_imunisasi.html">
-                                                    Ubah
-                                                </a>
-                                                <form
-                                                    action=""
-                                                    method="POST" style="display: inline-block;">
-                                                    <input type="hidden" name="_method" value="DELETE">
-                                                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                                    <input type="submit" class="btn btn-xs btn-danger"
-                                                        value="Hapus">
-                                                </form>
-                                            </td>
-                                        </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\imunisasi;
 use App\Models\layanan_kesehatan;
 use Illuminate\Http\Request;
 use App\Models\vaksin;
@@ -24,7 +25,9 @@ class AdminController extends Controller
     }
 
     public function imunisasi() {
-        return view('admin.imunisasi');
+        $imunisasis = imunisasi::all();
+
+        return view('admin.imunisasi', compact('imunisasis'));
     }
 
     public function tambahLakes() {
