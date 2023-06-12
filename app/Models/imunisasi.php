@@ -11,6 +11,15 @@ class imunisasi extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'id_lakes',
+        'username',
+        'phone',
+        'address',
+        'email',
+        'password',
+    ];
+
     public function layanan_kesehatan(){
         return $this->belongsTo(layanan_kesehatan::class, 'id_lakes', 'id');
     }

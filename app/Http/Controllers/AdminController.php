@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\imunisasi;
 use App\Models\layanan_kesehatan;
-use Illuminate\Http\Request;
 use App\Models\vaksin;
+use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
@@ -35,7 +35,10 @@ class AdminController extends Controller
     }
 
     public function tambahImunisasi() {
-        return view('admin.tambahImunisasi');
+        $lakess = layanan_kesehatan::all();
+        $vaksins = vaksin::all();
+
+        return view('admin.tambahImunisasi', compact('lakess'), compact('vaksins'));
     }
 
     public function tambahVaksin() {
@@ -76,5 +79,16 @@ class AdminController extends Controller
         $vaksin->save();
 
         return redirect()->back();
+    }
+
+    public function uploadImunisasi(Request $request) {
+        $imunisasi = new imunisasi;
+        $imunisasi->id_lakes - $request->lakes;
+        $imunisasi->id_vaksin = $request->vaksin;
+        $imunisasi->stok_vaksin = $request->stok;
+
+        $imunisasi->save();
+
+        return redirect()->back();  
     }
 }

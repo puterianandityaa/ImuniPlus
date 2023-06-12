@@ -18,29 +18,28 @@
             <!-- partial -->
             <div class="container-fluid page-body-wrapper">
                 <div class="container" align="center" style="padding-top: 100px;">
-                    <form action="">
+                    <form action="{{ url('upload_imunisasi') }}">
                         <div style="padding: 15px;">
-                            <label for="">Nama LaKes</label>
-                            <select name="" id="" style="color:black;width: 200px;">
+                            <label for="">Nama Layanan Kesehatan</label>
+                            <select name="lakes" id="" style="color:black;width: 200px;">
                                 <option>-- Select --</option>
-                                <option value="RS Siloam">a</option>
-                                <option value="RS Mitra Keluarga">b</option>
-                                <option value="RS Permata Keluarga">c</option>
+                                @foreach($lakess as $lakes)
+                                <option value="{{ $lakes->id }}">{{ $lakes->nama_lakes }}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div style="padding: 15px;">
                             <label for="">Nama Vaksin</label>
-                            <select name="" id="" style="color:black;width: 200px;">
+                            <select name="vaksin" id="" style="color:black;width: 200px;">
                                 <option>-- Select --</option>
-                                <option value="BCG">a</option>
-                                <option value="Polio 1">b</option>
-                                <option value="Polio 2">c</option>
+                                @foreach($vaksins as $vaksin)
+                                <option value="{{ $vaksin->id }}">{{ $vaksin->nama_vaksin }}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div style="padding: 15px;">
-                            <label for="">Stok Vaksin</label>
-                            <input type="text" style="color:black" name="name"
-                                placeholder="Tuliskan stok vaksin">
+                            <label for="stok">Stok Vaksin</label>
+                            <input type="text" style="color:black" name="stok" placeholder="Tuliskan stok vaksin">
                         </div>
                         <div style="padding: 15px;">
                             <input type="submit" class="btn btn-success">

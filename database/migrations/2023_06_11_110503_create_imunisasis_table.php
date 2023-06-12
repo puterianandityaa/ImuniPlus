@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('imunisasis', function (Blueprint $table) {
             $table->id();
-            $table->integer('id_lakes');
-            $table->integer('id_vaksin');
-            $table->integer('stok_vaksin');
+            $table->integer('id_lakes')->nullable();
+            $table->integer('id_vaksin')->nullable();
+            $table->integer('stok_vaksin')->nullable();
             $table->timestamps();
         });
     }

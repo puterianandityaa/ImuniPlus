@@ -54,6 +54,9 @@ Route::get('/upload_lakes', [AdminController::class, 'uploadLakes']);
 
 Route::get('/upload_vaksin', [AdminController::class, 'uploadVaksin']);
 
+Route::get('/upload_imunisasi', [AdminController::class, 'uploadImunisasi']);
+
+
 
 
 
