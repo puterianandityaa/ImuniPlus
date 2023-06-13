@@ -41,7 +41,12 @@ class AdminController extends Controller
         return view('admin.tambahImunisasi', compact('lakess'), compact('vaksins'));
     }
 
-    public function tambahVaksin() {
+    public function tambahVaksin(Request $request) {
+        $nama_vaksin = $request->input('');
+        $deskripsi = $request->input('deskripsi');
+        $ketersedian = $request->input('ketersediaan');
+        $min_umur = $request->input('min_umur');
+        
         return view('admin.tambahVaksin');
     }
 
@@ -70,13 +75,13 @@ class AdminController extends Controller
     }
 
     public function uploadVaksin(Request $request) {
-        $vaksin = new vaksin;
-        $vaksin->nama_vaksin = $request->name;
-        $vaksin->deskripsi_vaksin = $request->description;
-        $vaksin->ketersediaan_vaksin = $request->availability;
-        $vaksin->umur_minimal = $request->min_age;
-
-        $vaksin->save();
+        $nama_vaksin = $request->name;
+        $deskripsi_vaksin = $request->description;
+        $ketersediaan_vaksin = $request->availability;
+        $umur_minimal = $request->min_age;
+        // $vaksin->save();
+        $concat = "\"$nama_vaksin\", \"$deskripsi_vaksin\", $ketersediaan_vaksin, $umur_minimal";
+        vaksin::tambahVaksin("vaksins", "(nama_vaksin, deskripsi_vaksin, ketersediaan_vaksin, umur_minimal)", "'$concat'");
 
         return redirect()->back();
     }

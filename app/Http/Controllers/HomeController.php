@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\imunisasi;
+use App\Models\layanan_kesehatan;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Auth;
 
 use App\Models\User;
-
+use App\Models\vaksin;
 
 class HomeController extends Controller
 {
@@ -40,7 +42,9 @@ class HomeController extends Controller
     }
 
     public function reservation() {
-        return view('user.reservation');
+        $vaksin = vaksin::daftarVaksin();
+        $lakes = layanan_kesehatan::daftarLakes();
+        return view('user.reservation', compact('vaksin', 'lakes'));
     }
 
     public function profile() {

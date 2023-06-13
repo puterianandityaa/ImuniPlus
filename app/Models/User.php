@@ -4,8 +4,10 @@ namespace App\Models;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\DB;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
@@ -61,4 +63,15 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    public static function daftar()
+    {
+        return DB::select("CALL SelectProcedure(
+            'id, nama_lakes', 'layanan_kesehatans', '', '');");
+    }
+
+    public function imunisasi(): BelongsToMany
+    {
+        return $this->belongsToMany(imunisasi::class, 'mendaftars', 'id_user', 'id_imunisasi')->withPivot('nama_anak', 'umur_anak', 'tamggal_lahir', 'tanggal_imunisasi');
+    }
 }
