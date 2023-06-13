@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
@@ -61,4 +62,9 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    public function imunisasi(): BelongsToMany
+    {
+        return $this->belongsToMany(imunisasi::class, 'mendaftars', 'id_user', 'id_imunisasi')->withPivot('nama_anak', 'umur_anak', 'tamggal_lahir', 'tanggal_imunisasi');
+    }
 }

@@ -13,10 +13,13 @@ return new class extends Migration
     {
         Schema::create('imunisasis', function (Blueprint $table) {
             $table->id();
-            $table->integer('id_lakes')->nullable();
-            $table->integer('id_vaksin')->nullable();
+            $table->unsignedBigInteger('id_lakes');
+            $table->unsignedBigInteger('id_vaksin');
             $table->integer('stok_vaksin')->nullable();
             $table->timestamps();
+
+            $table->foreign('id_lakes')->references('id')->on('layanan_kesehatans')->onDelete('cascade');
+            $table->foreign('id_vaksin')->references('id')->on('vaksins')->onDelete('cascade');
         });
     }
 
