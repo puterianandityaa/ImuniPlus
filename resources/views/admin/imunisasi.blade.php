@@ -56,10 +56,10 @@
                                                 {{ $imunisasi->id }}
                                             </td>
                                             <td>
-                                                {{ $imunisasi->layanan_kesehatans->nama_lakes }}
+                                                {{ $imunisasi->nama_lakes }}
                                             </td>
                                             <td>
-                                                {{ $imunisasi->vaksins->nama_vaksin }}
+                                                {{ $imunisasi->nama_vaksin }}
                                             </td>
                                             <td>
                                                 {{ $imunisasi->stok_vaksin }}

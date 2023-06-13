@@ -31,7 +31,19 @@
                                                 ID User
                                             </th>
                                             <th>
-                                                Nama
+                                                Nama Anak
+                                            </th>
+                                            <th>
+                                                Nama Lakes
+                                            </th>
+                                            <th>
+                                                Nama Vaksin
+                                            </th>
+                                            <th>
+                                                Umur Anak
+                                            </th>
+                                            <th>
+                                                Tanggal Imunisasi
                                             </th>
                                             <th>
                                                 Alamat
@@ -48,21 +60,34 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        @foreach ($janjiTemus as $janjiTemu)
                                         <tr>
                                             <td>
-                                                1
+                                                {{ $janjiTemu->id }}
                                             </td>
                                             <td>
-                                                Udin Saprudin
+                                                {{ $janjiTemu->nama_anak }}
                                             </td>
                                             <td>
-                                                Jalan Jalan
+                                                {{ $janjiTemu->nama_lakes }}
                                             </td>
                                             <td>
-                                                +6281209891725
+                                                {{ $janjiTemu->nama_vaksin }}
                                             </td>
                                             <td>
-                                                abc@gmail.com
+                                                {{ $janjiTemu->umur_anak }}
+                                            </td>
+                                            <td>
+                                                {{ $janjiTemu->tanggal_imunisasi }}
+                                            </td>
+                                            <td>
+                                                {{ $janjiTemu->address }}
+                                            </td>
+                                            <td>
+                                                {{ $janjiTemu->phone }}
+                                            </td>
+                                            <td>
+                                                {{ $janjiTemu->email }}
                                             </td>
                                             <td>
                                                 <a class="btn btn-xs btn-primary" href="{{ url('tambah_janji_temu') }}">
@@ -78,66 +103,7 @@
                                                 </form>
                                             </td>
                                         </tr>
-                                        <tr>
-                                            <td>
-                                                2
-                                            </td>
-                                            <td>
-                                                Didin Padidin
-                                            </td>
-                                            <td>
-                                                Jalan Kemana Yak
-                                            </td>
-                                            <td>
-                                                +6285312345678
-                                            </td>
-                                            <td>
-                                                cba@gmail.com
-                                            </td>
-                                            <td>
-                                                <a class="btn btn-xs btn-primary" href="{{ url('ubah_janji_temu') }}">
-                                                    Ubah
-                                                </a>
-                                                <form
-                                                    action=""
-                                                    method="POST" style="display: inline-block;">
-                                                    <input type="hidden" name="_method" value="DELETE">
-                                                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                                    <input type="submit" class="btn btn-xs btn-danger"
-                                                        value="Hapus">
-                                                </form>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                3
-                                            </td>
-                                            <td>
-                                                Encep Surecep
-                                            </td>
-                                            <td>
-                                                Jalan Di Tempat
-                                            </td>
-                                            <td>
-                                                +6289843218765
-                                            </td>
-                                            <td>
-                                                cab@gmail.com
-                                            </td>
-                                            <td>
-                                                <a class="btn btn-xs btn-primary" href="ubah_janjitemu.html">
-                                                    Ubah
-                                                </a>
-                                                <form
-                                                    action=""
-                                                    method="POST" style="display: inline-block;">
-                                                    <input type="hidden" name="_method" value="DELETE">
-                                                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                                    <input type="submit" class="btn btn-xs btn-danger"
-                                                        value="Hapus">
-                                                </form>
-                                            </td>
-                                        </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>

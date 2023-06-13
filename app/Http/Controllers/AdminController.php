@@ -4,29 +4,39 @@ namespace App\Http\Controllers;
 
 use App\Models\imunisasi;
 use App\Models\layanan_kesehatan;
+use App\Models\User;
 use App\Models\vaksin;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
     public function janjiTemu() {
-        return view('admin.janjiTemu');
+        $table = "'mendaftars'";
+        $col = "\"mendaftars.id, mendaftars.nama_anak, layanan_kesehatans.nama_lakes, vaksins.nama_vaksin, mendaftars.umur_anak, mendaftars.tanggal_imunisasi, users.address, users.phone, users.email\"";
+        $join = "\"JOIN users ON users.id = mendaftars.id_user JOIN imunisasis ON imunisasis.id = mendaftars.id_imunisasi JOIN layanan_kesehatans ON layanan_kesehatans.id = imunisasis.id_lakes JOIN vaksins ON vaksins.id = imunisasis.id_vaksin\"";
+        $janjiTemus = User::daftarPendaftar($col, $table, $join, "\"\"");
+        return view('admin.janjiTemu', compact('janjiTemus'));
     }
 
     public function vaksin() {
-        $vaksins = vaksin::all();
+        $table = "'vaksins'";
+        $col = "\"id, nama_vaksin, deskripsi_vaksin, umur_minimal\"";
+        $vaksins = vaksin::daftarVaksin($col, $table, "\"\"", "\"\"");
         return view('admin.vaksin', compact('vaksins'));
     }
 
     public function lakes() {
-        $lakess = layanan_kesehatan::all();
-
+        $table = "'layanan_kesehatans'";
+        $col = "\"id, nama_lakes, alamat\"";
+        $lakess = layanan_kesehatan::daftarLakes($col, $table, "\"\"", "\"\"");
         return view('admin.lakes', compact('lakess'));
     }
 
     public function imunisasi() {
-        $imunisasis = imunisasi::all();
-
+        $table = "'imunisasis'";
+        $col = "\"imunisasis.id, layanan_kesehatans.nama_lakes, vaksins.nama_vaksin, imunisasis.stok_vaksin\"";
+        $join = "\"JOIN layanan_kesehatans ON layanan_kesehatans.id = imunisasis.id_lakes JOIN vaksins ON vaksins.id = imunisasis.id_vaksin\"";
+        $imunisasis = imunisasi::daftarImunisasi($col, $table, $join, "\"\"");
         return view('admin.imunisasi', compact('imunisasis'));
     }
 
@@ -41,12 +51,7 @@ class AdminController extends Controller
         return view('admin.tambahImunisasi', compact('lakess'), compact('vaksins'));
     }
 
-    public function tambahVaksin(Request $request) {
-        $nama_vaksin = $request->input('');
-        $deskripsi = $request->input('deskripsi');
-        $ketersedian = $request->input('ketersediaan');
-        $min_umur = $request->input('min_umur');
-        
+    public function tambahVaksin() {
         return view('admin.tambahVaksin');
     }
 

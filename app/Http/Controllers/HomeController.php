@@ -42,8 +42,8 @@ class HomeController extends Controller
     }
 
     public function reservation() {
-        $vaksin = vaksin::daftarVaksin();
-        $lakes = layanan_kesehatan::daftarLakes();
+        // $vaksin = vaksin::daftarVaksin();
+        // $lakes = layanan_kesehatan::daftarLakes();
         return view('user.reservation', compact('vaksin', 'lakes'));
     }
 

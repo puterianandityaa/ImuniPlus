@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class vaksin extends Model
 {
@@ -15,6 +16,16 @@ class vaksin extends Model
         'ketersediaan_vaksin',
         'umur_minimal',
     ];
+
+    public static function daftarVaksin($col, $table, $join, $where)
+    {
+        return DB::select("CALL SelectProcedure($col, $table, $join, $where)");
+    }
+    
+    public static function tambahVaksin($table, $column, $value)
+    {
+        return DB::select("CALL InsertProcedure($table, $column, $value)");
+    }
 
     public function layanan_kesehatan(){
         return $this->belongsToMany(LayananKesehatan::class, 'imunisasis', 'id_vaksin', 'id_lakes')->withPivot('stok_vaksin');
