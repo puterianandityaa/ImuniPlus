@@ -24,7 +24,7 @@ class vaksin extends Model
 
     public static function tambahVaksin($table, $column, $value)
     {
-        return DB::select("CALL InsertProcedure(?, ?, ?)", ["'$table'", "'$column'", "$value"]);
+        return DB::select("CALL InsertProcedure($table, $column, $value)");
     }
 
     public function layanan_kesehatan(){

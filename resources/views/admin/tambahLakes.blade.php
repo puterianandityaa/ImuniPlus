@@ -12,7 +12,9 @@
         <!-- partial:partials/_sidebar.html -->
         @include('admin.navbar')
             <!-- partial -->
+            @include('admin.sidebar')
             <div class="container-fluid page-body-wrapper">
+                
                 <div class="container" align="center" style="padding-top: 100px;">
                     <form action="{{ url('upload_lakes') }}">
                         <div style="padding: 15px;">
@@ -27,12 +29,8 @@
                         </div>
                         <div style="padding: 15px;">
                             <label for="">Jadwal</label>
-                            <select name="schedule" id="" style="color:black;width: 200px;">
-                                <option>-- Select --</option>
-                                <option value="a">a</option>
-                                <option value="b">b</option>
-                                <option value="c">c</option>
-                            </select>
+                            <input type="text" style="color:black" name="schedule"
+                                placeholder="(Senin,09.00-12.00)">
                         </div>
                         <div style="padding: 15px;">
                             <input type="submit" class="btn btn-success">

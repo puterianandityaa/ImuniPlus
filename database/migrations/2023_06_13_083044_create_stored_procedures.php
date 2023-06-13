@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
 
 return new class extends Migration
 {
@@ -42,7 +43,7 @@ return new class extends Migration
                 IN VAL TEXT
             )
             BEGIN
-                SET @SQL = CONCAT("INSERT INTO ", TBL, COL, " VALUES (", VAL, ");");
+                SET @SQL = CONCAT("INSERT INTO ", TBL, COL, " VALUES",VAL,";");
                 PREPARE STAT FROM @SQL;
                 EXECUTE STAT;
             END
