@@ -81,7 +81,7 @@
         <div class="container">
             <h1 class="text-center wow fadeInUp">Make a Reservation</h1>
 
-            <form class="reservation-form ">
+            <form class="reservation-form">
                 <div class="row mt-5 ">
                     <div class="col-12 col-sm-6 py-2 wow fadeInLeft">
                         <label for="reservation-kid-name">Nama Anak</label>
@@ -99,21 +99,17 @@
                     <div class="col-12 col-sm-6 py-2 wow fadeInRight" data-wow-delay="300ms">
                         <label for="reservation-vaccine">Pilihan Vaksin</label>
                         <select name="vaccine" id="reservation-vaccine" class="custom-select">
-                            <option>Hepatitis A</option>
-                            <option>Hepatitis B</option>
-                            <option>BCG</option>
-                            <option>HiB</option>
-                            <option>Rotavirus</option>
+                            @foreach ($vaksin as $data)
+                                <option value="{{ $data->id }}">{{ $data->nama_vaksin }}</option>
+                            @endforeach
                         </select>
                     </div>
                     <div class="col-12 col-sm-6 py-2 wow fadeInRight" data-wow-delay="300ms">
-                        <label for="reservation-hospital">Rumah Sakit</label>
+                        <label for="reservation-hospital">Layanan Kesehatan</label>
                         <select name="hospital" id="reservation-hospital" class="custom-select">
-                            <option>Rumah Sakit A</option>
-                            <option>Rumah Sakit B</option>
-                            <option>Rumah Sakit C</option>
-                            <option>Rumah Sakit D</option>
-                            <option>Rumah Sakit E</option>
+                            @foreach ($lakes as $data)
+                                <option value="{{ $data->id }}">{{ $data->nama_lakes }}</option>
+                            @endforeach
                         </select>
                     </div>
                     <div class="col-12 col-sm-6 py-2 wow fadeInRight" data-wow-delay="300ms">
@@ -126,7 +122,7 @@
                     <div class="col-12 align-item-center text-center">
                         <button type="submit" class="btn btn-primary mt-3 wow zoomIn ">Reservation</button>
                     </div>
-
+                </div>
             </form>
         </div>
     </div>

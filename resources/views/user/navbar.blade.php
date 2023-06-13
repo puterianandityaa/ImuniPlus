@@ -4,7 +4,7 @@
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">Imuni<span class="text-primary">Plus</span></a>
 
-                <div class="collapse navbar-collapse" id="navbarSupport">
+                <div class="navbar-collapse" id="navbarSupport">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item active">
                             <a class="nav-link" href="{{ url('/') }}">Home</a>

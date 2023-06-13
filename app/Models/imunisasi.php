@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class imunisasi extends Model
 {
@@ -16,7 +17,11 @@ class imunisasi extends Model
         'stok_vaksin',
     ];
 
-    public function user(){
-        return $this->belongsToMany(User::class, 'mendaftars', 'id_imunisasi', 'id_user');
+    public function layanan_kesehatan(){
+        return $this->belongsTo(layanan_kesehatan::class, 'id_lakes', 'id');
+    }
+
+    public function vaksin(){
+        return $this->belongsTo(vaksin::class, 'id_vaksin', 'id');
     }
 }
