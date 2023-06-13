@@ -11,6 +11,7 @@ class vaksin extends Model
     use HasFactory;
 
     protected $fillable = [
+        'id',
         'nama_vaksin',
         'deskripsi_vaksin',
         'ketersediaan_vaksin',
@@ -25,6 +26,16 @@ class vaksin extends Model
     public static function tambahVaksin($table, $column, $value)
     {
         return DB::select("CALL InsertProcedure($table, $column, $value)");
+    }
+
+    public static function updateVaksin($table,$colPK,$colValue,$colData)
+    {
+        return DB::select("CALL UpdateProcedure($table,$colPK,$colValue,$colData)");
+    }
+
+    public static function deleteVaksin($table,$colPK,$colValue)
+    {
+        return DB::select("CALL DeleteProcedure($table,$colPK,$colValue)");
     }
 
     public function layanan_kesehatan(){

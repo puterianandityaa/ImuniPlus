@@ -60,17 +60,12 @@
                                                 {{ $lakes->alamat }}
                                             </td>
                                             <td>
-                                                <a class="btn btn-xs btn-primary" href="{{ url('ubah_lakes') }}">
+                                                <a class="btn btn-xs btn-primary" href="/ubah_lakes/{{$lakes->id}}">
                                                     Ubah
                                                 </a>
-                                                <form
-                                                    action=""
-                                                    method="POST" style="display: inline-block;">
-                                                    <input type="hidden" name="_method" value="DELETE">
-                                                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                                    <input type="submit" class="btn btn-xs btn-danger"
-                                                        value="Hapus">
-                                                </form>
+                                                <a class="btn btn-xs btn-danger"href="/delete_lakes/{{$lakes->id}}">
+                                                    Hapus
+                                                </a>
                                             </td>
                                         </tr>
                                         @endforeach

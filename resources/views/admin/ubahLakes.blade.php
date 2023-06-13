@@ -17,25 +17,21 @@
             <!-- partial -->
             <div class="container-fluid page-body-wrapper">
                 <div class="container" align="center" style="padding-top: 100px;">
-                    <form action="">
+                    <form action="/update_lakes/{{$lakes->id}}">
                         <div style="padding: 15px;">
                             <label for="">Nama</label>
                             <input type="text" style="color:black" name="name"
-                                placeholder="Tuliskan nama layanan kesehatan" value="RS Mitra Keluarga">
+                                placeholder="Tuliskan nama layanan kesehatan" value="{{$lakes->nama_lakes}}">
                         </div>
                         <div style="padding: 15px;">
                             <label for="">Alamat</label>
-                            <input type="text" style="color:black" name="name"
-                                placeholder="Tuliskan alamat layanan kesehatan" value="Jalan Apa Yah">
+                            <input type="text" style="color:black" name="address"
+                                placeholder="Tuliskan alamat layanan kesehatan" value="{{$lakes->alamat}}">
                         </div>
                         <div style="padding: 15px;">
                             <label for="">Jadwal</label>
-                            <select name="" id="" style="color:black;width: 200px;">
-                                <option>-- Select --</option>
-                                <option value="a">a</option>
-                                <option value="b">b</option>
-                                <option value="c">c</option>
-                            </select>
+                            <input type="text" style="color:black" name="schedule"
+                                placeholder="(Senin,09.00-12.00)" value="{{$lakes->jadwal}}">
                         </div>
                         <div style="padding: 15px;">
                             <input type="submit" class="btn btn-success">

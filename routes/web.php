@@ -44,11 +44,17 @@ Route::get('/tambah_lakes', [AdminController::class, 'tambahLakes']);
 
 Route::get('/tambah_vaksin', [AdminController::class, 'tambahVaksin']);
 
-Route::get('/ubah_imunisasi', [AdminController::class, 'ubahVaksin']);
+Route::get('/ubah_imunisasi/{id}', [AdminController::class, 'ubahImunisasi']);
 
-Route::get('/ubah_lakes', [AdminController::class, 'ubahLakes']);
+Route::get('/update_imunisasi/{id}', [AdminController::class, 'updateImunisasi']);
 
-Route::get('/ubah_vaksin', [AdminController::class, 'ubahVaksin']);
+Route::get('/ubah_lakes/{id}', [AdminController::class, 'ubahLakes']);
+
+Route::get('/update_lakes/{id}',[AdminController::class, 'updateLakes']);
+
+Route::get('/ubah_vaksin/{id}', [AdminController::class, 'ubahVaksin']);
+
+Route::get('/update_vaksin/{id}',[AdminController::class, 'updateVaksin']);
 
 Route::get('/upload_lakes', [AdminController::class, 'uploadLakes']);
 
@@ -56,12 +62,13 @@ Route::get('/upload_vaksin', [AdminController::class, 'uploadVaksin']);
 
 Route::get('/upload_imunisasi', [AdminController::class, 'uploadImunisasi']);
 
+Route::get('/update_vaksin', [AdminController::class,'updateVaksin']);
 
+Route::get('/delete_vaksin/{id}',[AdminController::class,'deleteVaksin']);
 
+Route::get('/delete_lakes/{id}',[AdminController::class,'deleteLakes']);
 
-
-
-
+Route::get('/delete_imunisasi/{id}', [AdminController::class, 'deleteImunisasi']);
 
 
 

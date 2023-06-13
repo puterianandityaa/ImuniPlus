@@ -55,16 +55,86 @@ class AdminController extends Controller
         return view('admin.tambahVaksin');
     }
 
-    public function ubahLakes() {
-        return view('admin.ubahLakes');
+    public function ubahLakes($id) {
+        $lakes = layanan_kesehatan::find($id);
+        return view('admin.ubahLakes',compact('lakes'));
     }
 
-    public function ubahImunisasi() {
-        return view('admin.ubahImunisasi');
+    public function updateLakes(Request $request, $id){
+        $nama_lakes = $request->name;
+        $alamat = $request->address;
+        $jadwal = $request->schedule;
+
+        $tbl ="\"layanan_kesehatans\"";
+        $colData = "\"nama_lakes='$nama_lakes', alamat='$alamat',jadwal='$jadwal'\"";
+        $colPK = "\"id\"";
+        layanan_kesehatan::updateLakes($tbl,$colPK,$id,$colData);
+        return redirect('/lakes');
     }
 
-    public function ubahVaksin() {
-        return view('admin.ubahVaksin');
+    public function deleteLakes($id){
+        $tbl = "\"layanan_kesehatans\"";
+        $colPK = "\"id\"";
+        vaksin::deleteVaksin($tbl,$colPK,$id);
+        return redirect('/lakes');
+    }
+
+    public function ubahImunisasi($id) {
+        $imunisasi = imunisasi::find($id);
+        // $id_lakes = layanan_kesehatan::find($imunisasi->id_lakes);
+        // $id_vaksin = layanan_kesehatan::find($imunisasi->id_vaksin);
+        $lakess = layanan_kesehatan::all();
+        $vaksins = vaksin::all();
+
+        return view('admin.ubahImunisasi',compact('imunisasi','lakess','vaksins'));
+    }
+
+    public function updateImunisasi(Request $request,$id){
+        $imunisasi = imunisasi::find($id);
+        $id_lakes = $request->lakes;
+        $id_vaksin = $request->vaksin;
+        $stok_vaksin = $request->stok;
+        
+        $tbl ="\"imunisasis\"";
+        $colData = "\"id_lakes='$id_lakes', id_vaksin='$id_vaksin',stok_vaksin='$stok_vaksin'\"";
+        $colPK = "\"id\"";
+        vaksin::updateVaksin($tbl,$colPK,$id,$colData);
+
+        return redirect('/imunisasi');
+    }
+
+    public function deleteImunisasi($id){
+        $tbl = "\"imunisasis\"";
+        $colPK = "\"id\"";
+        imunisasi::deleteImunisasi($tbl,$colPK,$id);
+        return redirect('/imunisasi');
+    }
+
+    public function ubahVaksin($id) {
+        $vaksin = vaksin::find($id);
+        return view('admin.ubahVaksin',compact('vaksin'));
+    }
+
+    public function updateVaksin(Request $request, $id){
+        $vaksin = vaksin::find($id);
+        $nama_vaksin = $request->name;
+        $deskripsi_vaksin = $request->description;
+        $umur_minimal = $request->min_age;
+        // $vaksin->save();
+        $tbl ="\"vaksins\"";
+        $colData = "\"nama_vaksin='$nama_vaksin', deskripsi_vaksin='$deskripsi_vaksin',umur_minimal='$umur_minimal'\"";
+        $colPK = "\"id\"";
+        vaksin::updateVaksin($tbl,$colPK,$id,$colData);
+
+        return redirect('/vaksin');
+    
+    }
+
+    public function deleteVaksin($id){
+        $tbl = "\"vaksins\"";
+        $colPK = "\"id\"";
+        vaksin::deleteVaksin($tbl,$colPK,$id);
+        return redirect('/vaksin');
     }
 
     public function uploadLakes(Request $request) {
@@ -77,8 +147,10 @@ class AdminController extends Controller
         $concat = "\"('$nama_lakes', '$alamat', '$jadwal')\"";
         layanan_kesehatan::tambahLakes($tbl,$col,$concat);
         //$lakes->save();
-        return redirect()->back();
+        return redirect('/lakes');
     }
+
+ 
 
     public function uploadVaksin(Request $request) {
         $nama_vaksin = $request->name;
@@ -91,7 +163,7 @@ class AdminController extends Controller
         $concat = "\"('$nama_vaksin', '$deskripsi_vaksin', $ketersediaan_vaksin, $umur_minimal)\"";
         vaksin::tambahVaksin($tbl,$col,$concat);
 
-        return redirect()->back();
+        return redirect('/vaksin');
     }
 
     public function uploadImunisasi(Request $request) {
@@ -105,6 +177,6 @@ class AdminController extends Controller
         imunisasi::tambahImunisasi($tbl,$col,$concat);
 
 
-        return redirect()->back();  
+        return redirect('/imunisasi');  
     }
 }

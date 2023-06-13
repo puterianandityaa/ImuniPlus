@@ -27,6 +27,16 @@ class imunisasi extends Model
         return DB::select("CALL InsertProcedure($table, $column, $value)");
     }
 
+    public static function updateImunisasi($table,$colPK,$colValue,$colData)
+    {
+        return DB::select("CALL UpdateProcedure($table,$colPK,$colValue,$colData)");
+    }
+
+    public static function deleteImunisasi($table,$colPK,$colValue)
+    {
+        return DB::select("CALL DeleteProcedure($table,$colPK,$colValue)");
+    }
+
     public function layanan_kesehatan(){
         return $this->belongsTo(layanan_kesehatan::class, 'id_lakes', 'id');
     }
