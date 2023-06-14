@@ -58,13 +58,37 @@ class HomeController extends Controller
         );
 
         $lakess = layanan_kesehatan::daftarLakes(
-            "\"layanan_kesehatans.id, layanan_kesehatans.nama_lakes, mendaftars.tanggal_imunisasi\"",
+            "\"layanan_kesehatans.id, layanan_kesehatans.nama_lakes, layanan_kesehatans.jadwal\"",
             "\"layanan_kesehatans\"",
-            "\"JOIN imunisasis ON imunisasis.id_lakes = layanan_kesehatans.id JOIN vaksins ON vaksins.id = imunisasis.id_vaksin JOIN mendaftars ON mendaftars.id_imunisasi = imunisasis.id\"",
-            "\"imunisasis.id_vaksin = vaksins.id\""
-        );
+            "\"JOIN imunisasis ON imunisasis.id_lakes = layanan_kesehatans.id JOIN vaksins ON vaksins.id = imunisasis.id_vaksin\"",
+            "\"imunisasis.id_vaksin = vaksins.id\"");
             
         return view('user.reservation', compact('vaksins', 'lakess',  'janjiTemus'));
+    }
+
+    public function uploadReservation(Request $request){
+        $nama_anak = $request->kid_name;
+        $umur_anak = $request->kid_age;
+        $tgl_lahir = $request->kid_birth;
+        $vaksin = $request->vaccine;
+        $lakes = $request->hospital;
+        $jadwal = $request->date;
+        $userId = Auth::id();
+
+        $imunisasi = User::daftarPendaftar(
+            "\"id\"",
+            "\"imunisasis\"",
+            "\"\"",
+            "\"imunisasis.id_lakes=$lakes AND imunisasis.id_vaksin=$vaksin\""
+        );
+        $id_imunisasi = $imunisasi[0]->id;
+
+        $tbl ="\"mendaftars\"";
+        $col = "\"(id_user,id_imunisasi,nama_anak,umur_anak,tanggal_lahir)\"";
+        $concat = "\"('$userId','$id_imunisasi','$nama_anak', '$umur_anak', '$tgl_lahir')\"";
+
+        User::tambahPendaftar($tbl,$col,$concat);
+        return redirect('/reservation');
     }
 
     public function getDaftarLakes(Request $request)

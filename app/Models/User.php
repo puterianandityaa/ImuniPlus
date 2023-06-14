@@ -69,6 +69,10 @@ class User extends Authenticatable
         return DB::select("CALL SelectProcedure($col, $table, $join, $where)");
     }
 
+    public static function tambahPendaftar($table, $column, $value){
+        return DB::select("CALL InsertProcedure($table, $column, $value)");
+    }
+
     public function imunisasi(): BelongsToMany
     {
         return $this->belongsToMany(imunisasi::class, 'mendaftars', 'id_user', 'id_imunisasi')->withPivot('nama_anak', 'umur_anak', 'tamggal_lahir', 'tanggal_imunisasi');

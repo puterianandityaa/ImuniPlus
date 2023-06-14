@@ -62,6 +62,8 @@ Route::get('/upload_vaksin', [AdminController::class, 'uploadVaksin']);
 
 Route::get('/upload_imunisasi', [AdminController::class, 'uploadImunisasi']);
 
+Route::get('/upload_pendaftar',[HomeController::class,'uploadReservation']);
+
 Route::get('/update_vaksin', [AdminController::class,'updateVaksin']);
 
 Route::get('/delete_vaksin/{id}',[AdminController::class,'deleteVaksin']);

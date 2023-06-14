@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('nama_anak');
             $table->integer('umur_anak');
             $table->date('tanggal_lahir');
-            $table->date('tanggal_imunisasi');
+            $table->string('tanggal_imunisasi');
             $table->timestamps();
 
             $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade');
