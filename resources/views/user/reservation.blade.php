@@ -11,6 +11,8 @@
 
     <title>One Health - Medical Center HTML5 Template</title>
 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
     <link rel="stylesheet" href="../assets/css/maicons.css">
 
     <link rel="stylesheet" href="../assets/css/bootstrap.css">
@@ -56,23 +58,25 @@
                             <tr>
                                 <th>Nama Anak</th>
                                 <th>Vaksin</th>
-                                <th>Rumah Sakit</th>
+                                <th>Layanan Kesehatan</th>
                                 <th>Tanggal Imunisasi</th>
                                 <th colspan="2">Opsi</th>
                             </tr>
                         </thead>
                         <tbody>
+                            @foreach($janjiTemus as $data)
                             <tr>
-                                <td>Reyhan</td>
-                                <td>Hepatitis A</td>
-                                <td>Rumah Sakit A</td>
-                                <td>Jumat, 09.00-11.00 WIB</td>
+                                <td>{{ $data->nama_anak }}</td>
+                                <td>{{ $data->nama_vaksin }}</td>
+                                <td>{{ $data->nama_lakes }}</td>
+                                <td>{{ $data->tanggal_imunisasi }}</td>
                                 <td class="text-center"><button class="btn btn-danger"><i
                                             class="uil uil-trash-alt"></i></button></td>
                                 <td class="text-center"><button class="btn btn-secondary"><i
                                             class="uil uil-edit-alt"></i></button></td>
 
                             </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -99,7 +103,7 @@
                     <div class="col-12 col-sm-6 py-2 wow fadeInRight" data-wow-delay="300ms">
                         <label for="reservation-vaccine">Pilihan Vaksin</label>
                         <select name="vaccine" id="reservation-vaccine" class="custom-select">
-                            @foreach ($vaksin as $data)
+                            @foreach ($vaksins as $data)
                                 <option value="{{ $data->id }}">{{ $data->nama_vaksin }}</option>
                             @endforeach
                         </select>
@@ -107,16 +111,18 @@
                     <div class="col-12 col-sm-6 py-2 wow fadeInRight" data-wow-delay="300ms">
                         <label for="reservation-hospital">Layanan Kesehatan</label>
                         <select name="hospital" id="reservation-hospital" class="custom-select">
-                            @foreach ($lakes as $data)
+                            @foreach ($lakess as $data)
                                 <option value="{{ $data->id }}">{{ $data->nama_lakes }}</option>
                             @endforeach
                         </select>
+
                     </div>
                     <div class="col-12 col-sm-6 py-2 wow fadeInRight" data-wow-delay="300ms">
                         <label for="reservation-date">Tanggal Imunisasi</label>
                         <select name="date" id="reservation-date" class="custom-select">
-                            <option>Jumat, 09.00-11.00 WIB</option>
-                            <option>Minggu, 09.00-11.00 WIB</option>
+                            @foreach ($lakess as $data)
+                                <option value="{{ $data->id }}">{{ $data->tanggal_imunisasi }}</option>
+                            @endforeach
                         </select>
                     </div>
                     <div class="col-12 align-item-center text-center">

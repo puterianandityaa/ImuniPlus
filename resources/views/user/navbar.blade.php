@@ -19,15 +19,17 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ url ('contact') }}">Contact</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ url ('reservation') }}">Reservation</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ url('profile') }}">Profile</a>
-                        </li>
 
                         @if(Route::has('login'))
                         @auth
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url ('reservation') }}">Reservation</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url('profile') }}">Profile</a>
+                        </li>
 
                         <x-app-layout>
                         </x-app-layout>

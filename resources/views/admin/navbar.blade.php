@@ -9,28 +9,21 @@
         </button>
         <ul class="navbar-nav navbar-nav-right">
             <li class="nav-item dropdown">
-                <a class="nav-link" id="profileDropdown" href="#" data-toggle="dropdown">
-                    <div class="navbar-profile">
-                        <p class="mb-0 d-none d-sm-block navbar-profile-name">Admin</p>
-                        <i class="mdi mdi-menu-down d-none d-sm-block"></i>
-                    </div>
-                </a>
-                <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list"
-                    aria-labelledby="profileDropdown">
-                    <h6 class="p-3 mb-0">Profile</h6>
-                    <div class="dropdown-divider"></div>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item preview-item">
-                        <div class="preview-thumbnail">
-                            <div class="preview-icon bg-dark rounded-circle">
-                                <i class="mdi mdi-logout text-danger"></i>
-                            </div>
-                        </div>
-                        <div class="preview-item-content">
-                            <p class="preview-subject mb-1">Log out</p>
-                        </div>
-                    </a>
-                </div>
+            @if(Route::has('login'))
+            @auth
+                <x-app-layout>
+                </x-app-layout>
+                @else
+                <li class="nav-item">
+                    <a href="{{ route('login') }}">
+                    <button class="btn btn-primary ml-lg-3" id="form-login-open2">Login</button>                            </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('register') }}">
+                    <button class="btn btn-primary ml-lg-3" id="form-register-open">Register</button>                        </a>
+                </li>
+            @endauth
+            @endif
             </li>
         </ul>
         <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button"

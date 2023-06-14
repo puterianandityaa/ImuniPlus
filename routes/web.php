@@ -70,6 +70,7 @@ Route::get('/delete_lakes/{id}',[AdminController::class,'deleteLakes']);
 
 Route::get('/delete_imunisasi/{id}', [AdminController::class, 'deleteImunisasi']);
 
+Route::post('/get-lakess', 'HomeController@getDaftarLakes')->name('getLakess');;
 
 
 
